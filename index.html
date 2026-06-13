@@ -3,31 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solviem | Tu paz financiera comienza aquí</title>
+    <meta name="description" content="Solviem: contabilidad y cumplimiento fiscal para freelancers, emprendedores y pymes en México.">
+    <title>Solviem | Soluciones Empresariales Integrales</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="./favicon.ico">
 </head>
 <body>
 
     <!-- Header -->
-    <div class="header">
+    <header class="header">
         <a href="#inicio" class="logo">
-            <img src="./solviemcirculo.png" alt="Solviem">
+            <img src="./solviemcirculo.png" alt="Logotipo de Solviem">
             <span>SOLVIEM</span>
         </a>
 
+        <nav>
             <ul class="links">
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Proceso</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
-    </div>
+        </nav>
+    </header>
 
     <!-- Content -->
-    <div class="content">
+    <main class="content">
 
         <!-- Hero -->
-        <div class="up">
+        <section class="up" id="inicio">
             <div class="hero-text">
                 <h1>Tu paz financiera comienza aquí</h1>
 
@@ -38,49 +42,55 @@
                     en hacer crecer tu negocio.
                 </p>
 
-                <button>Agenda una consulta</button>
+                <button type="button">Agenda una consulta</button>
             </div>
 
-            <img src="./0.png" alt="Solviem">
-        </div>
+            <img src="./0.png" alt="Ilustración de planeación financiera para emprendedores">
+        </section>
 
         <!-- Services -->
-        <div class="random">
+        <section class="random" id="servicios">
             <h2>Nuestros Servicios</h2>
 
             <div class="cards">
 
-                <div class="card"> Diagnóstico Contable y Fiscal
-                    <img src="./1.png" alt="diagnostico">
+                <div class="card">
+                    <h3>Diagnóstico Contable y Fiscal</h3>
+                    <img src="./1.png" alt="Diagnóstico contable y fiscal">
                     <div class="text">
                         Identificamos riesgos, pendientes y oportunidades de ahorro para que tengas claridad sobre tu situación financiera.
                     </div>
                 </div>
 
-                <div class="card"> Declaraciones y Cumplimiento SAT
-                    <img src="./2.png" alt="Impuestos">
+                <div class="card">
+                    <h3>Declaraciones y Cumplimiento SAT</h3>
+                    <img src="./2.png" alt="Declaraciones fiscales y cumplimiento ante el SAT">
                     <div class="text">
                         Presentamos ISR, IVA y demás obligaciones fiscales en tiempo y forma para evitar multas y recargos.
                     </div>
                 </div>
 
-                <div class="card"> Devoluciones y Optimización de Impuestos
-                    <img src="./3.png" alt="Devoluciones">
+                <div class="card">
+                    <h3>Devoluciones y Optimización de Impuestos</h3>
+                    <img src="./3.png" alt="Devolución y optimización de impuestos">
                     <div class="text">
-                    Te ayudamos a recuperar saldos a favor y a aprovechar correctamente las deducciones permitidas.                    </div>
+                        Te ayudamos a recuperar saldos a favor y a aprovechar correctamente las deducciones permitidas.
+                    </div>
                 </div>
 
-                <div class="card"> Contabilidad Mes a Mes
-                    <img src="./4.png" alt="Asesoría Mensual">
+                <div class="card">
+                    <h3>Contabilidad Mes a Mes</h3>
+                    <img src="./4.png" alt="Contabilidad y asesoría mensual">
                     <div class="text">
-                    Registramos y conciliamos tus operaciones para mantener tu negocio organizado y listo para crecer.                    </div>
+                        Registramos y conciliamos tus operaciones para mantener tu negocio organizado y listo para crecer.
+                    </div>
                 </div>
 
             </div>
-        </div>
+        </section>
 
         <!-- Process -->
-        <div class="process">
+        <section class="process" id="proceso">
 
             <h2>¿Cómo trabajamos?</h2>
 
@@ -120,18 +130,18 @@
 
             </div>
 
-        </div>
+        </section>
 
         <!-- Quote -->
-        <div class="quote">
+        <section class="quote" id="nosotros">
             <blockquote>
                 "La contabilidad no tiene por qué ser complicada. En Solviem promovemos una contabilidad clara y sin estrés para que los emprendedores se concentren en crecer su negocio."
                 <footer>— Equipo Solviem</footer>
             </blockquote>
-        </div>
+        </section>
 
         <!-- CTA -->
-        <div class="action">
+        <section class="action" id="contacto">
             <div class="action-text">
                 <h3>¿Listo para olvidarte del estrés fiscal?</h3>
 
@@ -140,15 +150,15 @@
                 </p>
             </div>
 
-            <button>Contáctanos</button>
-        </div>
+            <button type="button">Contáctanos</button>
+        </section>
 
-    </div>
+    </main>
 
     <!-- Footer -->
-    <div class="footer">
+    <footer class="footer">
         Copyright © 2026 Solviem Consultoría Contable y Empresarial
-    </div>
+    </footer>
 
 </body>
 </html>
