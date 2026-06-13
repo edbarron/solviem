@@ -1,0 +1,340 @@
+/* * {
+    outline: 2px solid red !important;
+} */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #1f2937;
+}
+
+/* HEADER */
+
+.header {
+    background: #012A47;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 200px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;
+    color: white;
+
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo img {
+    width: 56px;
+    height: 56px;
+
+    border-radius: 50%;
+    object-fit: cover;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+
+.logo span {
+    color: white;
+}
+
+.links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.links a {
+    text-decoration: none;
+    color: #e2e8f0;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.links a:hover {
+    color: white;
+}
+
+/* CONTENT */
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HERO */
+
+.up {
+    background: #012A47;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 200px;
+    gap: 60px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    color: white;
+    font-size: 56px;
+    font-weight: 900;
+    margin: 0 0 20px;
+}
+
+.hero-text p {
+    color: #dbe4ee;
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 650px;
+}
+
+.hero-text button {
+    background: #02365D;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 34px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero-text button:hover {
+    background: #0A4D82;
+}
+
+.up img {
+    width: 420px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* SERVICES */
+
+.random {
+    padding: 90px 200px;
+    text-align: center;
+    background: white;
+}
+
+.random h2 {
+    font-size: 40px;
+    color: #02365D;
+    margin-bottom: 60px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    max-width: 220px;
+}
+
+.card img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 4px solid #02365D;
+}
+
+.card .text {
+    margin-top: 15px;
+    line-height: 1.5;
+    color: #475569;
+}
+
+/* PROCESS */
+
+.process {
+    background: #f8fafc;
+    padding: 90px 200px;
+    text-align: center;
+}
+
+.process h2 {
+    font-size: 40px;
+    color: #02365D;
+    margin-bottom: 60px;
+}
+
+.steps {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.step {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 240px;
+    box-shadow: 0 5px 15px rgba(2, 54, 93, 0.08);
+}
+
+.step span {
+    display: inline-flex;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #02365D;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.step h3 {
+    margin-bottom: 15px;
+    color: #02365D;
+}
+
+.step p {
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* QUOTE */
+
+.quote {
+    background: #edf2f7;
+    padding: 100px 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.quote blockquote {
+    max-width: 900px;
+    margin: 0;
+    color: #334155;
+    font-size: 34px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.quote footer {
+    margin-top: 25px;
+    text-align: right;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    color: #02365D;
+}
+
+/* CTA */
+
+.action {
+    margin: 80px 200px;
+    padding: 50px 80px;
+    border-radius: 12px;
+    background: #02365D;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.action-text h3 {
+    margin: 0;
+    color: white;
+    font-size: 28px;
+}
+
+.action-text p {
+    color: #dbeafe;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.action button {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.action button:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* FOOTER */
+
+.footer {
+    background: #012A47;
+    color: white;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+
+    .header,
+    .up,
+    .random,
+    .process {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .up {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text p {
+        max-width: 100%;
+    }
+
+    .quote {
+        padding: 60px 40px;
+    }
+
+    .action {
+        margin: 40px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 42px;
+    }
+
+    .random h2,
+    .process h2 {
+        font-size: 32px;
+    }
+}
