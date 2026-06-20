@@ -113,20 +113,60 @@ body {
     max-width: 650px;
 }
 
-.hero-text button {
-    background: #02365D;
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 12px 34px;
-    font-size: 18px;
+    padding: 12px 28px;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn-whatsapp svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.btn-whatsapp:hover {
+    background: #1eb858;
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 17px;
     font-weight: 700;
     cursor: pointer;
     transition: 0.3s;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
-.hero-text button:hover {
-    background: #0A4D82;
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
 }
 
 .up img {
@@ -261,17 +301,23 @@ body {
     color: #02365D;
 }
 
-/* CTA */
+/* CTA / CONTACT */
 
 .action {
     margin: 80px clamp(40px, 8vw, 200px);
-    padding: 50px 80px;
+    padding: 60px clamp(40px, 6vw, 80px);
     border-radius: 12px;
     background: #02365D;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 30px;
+    align-items: flex-start;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.action-text {
+    flex: 1;
+    min-width: 240px;
 }
 
 .action-text h3 {
@@ -284,23 +330,115 @@ body {
     color: #dbeafe;
     margin-top: 10px;
     font-size: 18px;
+    max-width: 380px;
 }
 
-.action button {
-    background: transparent;
-    border: 2px solid white;
+.contact-form {
+    flex: 1;
+    min-width: 280px;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-row label {
+    color: #dbeafe;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-row input,
+.form-row textarea {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    padding: 10px 12px;
     color: white;
-    padding: 12px 30px;
+    font-size: 15px;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.form-row input::placeholder,
+.form-row textarea::placeholder {
+    color: #9fb3c8;
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+    outline: none;
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.contact-form button {
+    background: white;
+    color: #02365D;
+    border: none;
     border-radius: 8px;
-    font-size: 18px;
+    padding: 12px 30px;
+    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     transition: 0.3s;
-    white-space: nowrap;
 }
 
-.action button:hover {
-    background: rgba(255, 255, 255, 0.15);
+.contact-form button:hover {
+    background: #dbeafe;
+}
+
+.contact-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-status {
+    margin: 0;
+    font-size: 14px;
+    min-height: 18px;
+}
+
+.form-status.success {
+    color: #86efac;
+}
+
+.form-status.error {
+    color: #fca5a5;
+}
+
+/* WHATSAPP FLOAT */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 26px;
+    right: 26px;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    transition: transform 0.2s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+}
+
+.whatsapp-float svg {
+    width: 30px;
+    height: 30px;
+    color: white;
 }
 
 /* FOOTER */
@@ -325,6 +463,10 @@ body {
         text-align: center;
     }
 
+    .hero-actions {
+        justify-content: center;
+    }
+
     .hero-text p {
         max-width: 100%;
         margin-left: auto;
@@ -343,6 +485,11 @@ body {
         margin: 40px;
         flex-direction: column;
         text-align: center;
+    }
+
+    .contact-form {
+        text-align: left;
+        max-width: 100%;
     }
 
     .hero-text h1 {
