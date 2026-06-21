@@ -195,9 +195,82 @@ body {
 .article-meta {
     color: #94a3b8;
     font-size: 14px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     padding-bottom: 30px;
     border-bottom: 1px solid #e5e9ef;
+}
+
+.article-image {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    display: block;
+    background: #f1f5f9;
+}
+
+.article-share {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 44px;
+}
+
+.article-share-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    margin-right: 4px;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid #e5e9ef;
+    background: white;
+    color: #475569;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.share-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+}
+
+.share-whatsapp:hover {
+    background: #25D366;
+    border-color: #25D366;
+    color: white;
+}
+
+.share-facebook:hover {
+    background: #1877F2;
+    border-color: #1877F2;
+    color: white;
+}
+
+.share-x:hover {
+    background: #000000;
+    border-color: #000000;
+    color: white;
+}
+
+.share-copy:hover {
+    background: #02365D;
+    border-color: #02365D;
+    color: white;
 }
 
 .article-body {
@@ -289,6 +362,34 @@ body {
     align-items: center;
     text-align: center;
     padding: 0 20px;
+}
+
+/* WHATSAPP FLOAT */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 26px;
+    right: 26px;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    transition: transform 0.2s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+}
+
+.whatsapp-float svg {
+    width: 30px;
+    height: 30px;
+    color: white;
 }
 
 /* RESPONSIVE */
