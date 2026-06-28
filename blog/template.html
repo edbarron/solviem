@@ -3,10 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="[ESCRIBE AQUÍ 1-2 frases que resuman el artículo, con tus palabras clave principales. Esto aparece en Google.]">
-    <title>[Título del Artículo] | Blog Solviem</title>
+
+    <!-- ================================================
+         CHECKLIST — cambiar esto por cada artículo:
+         [ ] meta description
+         [ ] title
+         [ ] og:title, og:description, og:url, og:image
+         [ ] twitter:title, twitter:description, twitter:image
+         [ ] canonical
+         [ ] img src y alt
+         [ ] h1, fecha, minutos de lectura
+         [ ] contenido del artículo
+         [ ] h3 y párrafo del CTA
+         ================================================ -->
+
+    <meta name="description" content="[1-2 frases con palabras clave. Máx 155 caracteres. Esto aparece en Google.]">
+    <title>[Título del Artículo — incluir palabra clave principal] | Blog Solviem</title>
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Solviem">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:title" content="[Mismo título, sin | Blog Solviem]">
+    <meta property="og:description" content="[2-3 frases enganchadoras para la preview en redes. Puede ser diferente a la meta description.]">
+    <meta property="og:url" content="https://solviem.com/blog/[nombre-del-archivo.html]">
+    <meta property="og:image" content="https://solviem.com/blog/[nombre-del-archivo.jpg]">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="[Mismo título, sin | Blog Solviem]">
+    <meta name="twitter:description" content="[Versión corta, 1-2 frases.]">
+    <meta name="twitter:image" content="https://solviem.com/blog/[nombre-del-archivo.jpg]">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://solviem.com/blog/[nombre-del-archivo.html]">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="blog.css">
-        <!-- Google tag (gtag.js) -->
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K52PZSW29W"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,10 +52,9 @@
     gtag('js', new Date());
     gtag('config', 'G-K52PZSW29W');
     </script>
-
 </head>
-<body>
 
+<body>
     <!-- Header -->
     <header class="header">
         <a href="/" class="logo">
@@ -42,7 +79,7 @@
 
             <p class="article-breadcrumb"><a href="./">← Volver al blog</a></p>
 
-            <p class="article-date">[Fecha, ej: 20 de junio, 2026]</p>
+            <p class="article-date">[Fecha, ej: 27 de junio, 2026]</p>
 
             <h1>[Título del Artículo — debe incluir tu palabra clave principal]</h1>
 
@@ -50,12 +87,11 @@
 
             <!--
                 IMAGEN DESTACADA:
-                - Guarda la imagen dentro de blog/ con un nombre descriptivo
-                - Usa el mismo nombre en el índice para que coincidan
-                - Ejemplo: src="como-evitar-multas-sat.png"
-                - Tamaño recomendado: 1200x630px (también sirve para compartir en redes)
+                - Mismo nombre que el archivo HTML pero con extensión .jpg
+                - Tamaño recomendado: 1200x630px (sirve también como preview en redes)
+                - El alt describe la imagen visualmente, no repite el título
             -->
-            <img class="article-image" src="[nombre-del-articulo.png]" alt="[Describe la imagen aquí para SEO]">
+            <img class="article-image" src="[nombre-del-archivo.jpg]" alt="[Descripción visual de la imagen]">
 
             <div class="article-share">
                 <span class="article-share-label">Compartir:</span>
@@ -77,22 +113,21 @@
 
                 <!--
                     CONSEJOS DE ESCRITURA:
-                    - Usa <strong> para resaltar frases clave — ayuda a la lectura rápida y al SEO
+                    - Usa <strong> para resaltar frases clave
                     - Escribe como si le explicaras esto a un cliente en persona
-                    - Un párrafo de introducción que enganche, luego h2 por cada sección
-                    - Cierra con un párrafo que lleve naturalmente al CTA de abajo
+                    - Intro que enganche → secciones con h2 → blockquote → cierre hacia CTA
+                    - CTA personalizado al tema del artículo, no genérico
                 -->
 
                 <p>
-                    [Párrafo de introducción. Presenta el problema que resuelve el artículo.
-                    Usa <strong>negritas</strong> para las frases más importantes.]
+                    [Párrafo de introducción. Engancha con el problema.
+                    Usa <strong>negritas</strong> en las frases más importantes.]
                 </p>
 
-                <h2>[Primer subtítulo — usa una pregunta o frase que la gente buscaría en Google]</h2>
+                <h2>[Primer subtítulo — frase que la gente buscaría en Google]</h2>
 
                 <p>
-                    [Contenido. Resalta con <strong>negritas</strong> los conceptos clave
-                    para quien escanea el texto sin leerlo completo.]
+                    [Contenido. <strong>Negritas</strong> en conceptos clave.]
                 </p>
 
                 <ul>
@@ -103,26 +138,23 @@
 
                 <h2>[Segundo subtítulo]</h2>
 
-                <p>
-                    [Más contenido aquí.]
-                </p>
+                <p>[Más contenido.]</p>
 
                 <blockquote>
-                    [Frase destacada que resuma la idea central del artículo.
-                    Puede incluir <strong>negritas</strong> para el remate final.]
+                    [Frase destacada con la idea central. Puede tener <strong>negritas</strong>.]
                 </blockquote>
 
                 <p>
-                    [Párrafo de cierre — lleva al lector naturalmente hacia el CTA de abajo.
-                    No vendas directamente, solo deja claro que no tiene que hacerlo solo.]
+                    [Párrafo de cierre — lleva naturalmente al CTA.
+                    No vendas directamente, deja claro que no tiene que hacerlo solo.]
                 </p>
 
             </div>
 
-            <!-- CTA al final del artículo -->
+            <!-- CTA — personalizar al tema del artículo -->
             <div class="article-cta">
-                <h3>¿Necesitas ayuda con esto?</h3>
-                <p>Agenda una consulta gratuita y resolvemos tus dudas fiscales.</p>
+                <h3>[Pregunta directa relacionada al tema]</h3>
+                <p>[Frase de acción concreta.]</p>
                 <a href="/#contacto">Contáctanos</a>
             </div>
 

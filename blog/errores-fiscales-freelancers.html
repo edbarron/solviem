@@ -3,10 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ================================================
+         CHECKLIST — cambiar esto por cada artículo:
+         [x] meta description
+         [x] title
+         [x] og:title, og:description, og:url, og:image
+         [x] twitter:title, twitter:description, twitter:image
+         [x] canonical
+         [x] img src y alt
+         [x] h1, fecha, minutos de lectura
+         [x] contenido del artículo
+         [x] h3 y párrafo del CTA
+         ================================================ -->
+
     <meta name="description" content="Los errores fiscales más comunes que cometen los freelancers en México ante el SAT, y cómo evitarlos para no pagar multas ni perder dinero en deducciones.">
     <title>7 Errores Fiscales que Cometen los Freelancers en México | Blog Solviem</title>
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Solviem">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:title" content="7 Errores Fiscales que Cometen los Freelancers en México">
+    <meta property="og:description" content="Freelancer en México: evita multas y maximiza tus deducciones con estos 7 errores fiscales que nadie te dice.">
+    <meta property="og:url" content="https://solviem.com/blog/7-errores-fiscales-freelancers.html">
+    <meta property="og:image" content="https://solviem.com/blog/errores-fiscales-freelancers.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="7 Errores Fiscales que Cometen los Freelancers en México">
+    <meta name="twitter:description" content="Descubre los 7 errores fiscales más comunes que cometen los freelancers en México y cómo evitarlos para ahorrar en impuestos.">
+    <meta name="twitter:image" content="https://solviem.com/blog/errores-fiscales-freelancers.jpg">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://solviem.com/blog/7-errores-fiscales-freelancers.html">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="blog.css">
-        <!-- Google tag (gtag.js) -->
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K52PZSW29W"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,10 +52,9 @@
     gtag('js', new Date());
     gtag('config', 'G-K52PZSW29W');
     </script>
-
 </head>
-<body>
 
+<body>
     <!-- Header -->
     <header class="header">
         <a href="/" class="logo">
@@ -48,7 +85,13 @@
 
             <p class="article-meta">Por el equipo de Solviem · Lectura de 7 minutos</p>
 
-            <img class="article-image" src="errores-fiscales-freelancers.png" alt="Freelancer revisando sus facturas y documentos fiscales">
+            <!--
+                IMAGEN DESTACADA:
+                - Mismo nombre que el archivo HTML pero con extensión .jpg
+                - Tamaño recomendado: 1200x630px (sirve también como preview en redes)
+                - El alt describe la imagen visualmente, no repite el título
+            -->
+            <img class="article-image" src="errores-fiscales-freelancers.jpg" alt="Freelancer revisando sus facturas y documentos fiscales">
 
             <div class="article-share">
                 <span class="article-share-label">Compartir:</span>
@@ -222,11 +265,11 @@
 
             </div>
 
-            <!-- CTA al final del artículo -->
+            <!-- CTA — personalizar al tema del artículo -->
             <div class="article-cta">
-                <h3>¿Necesitas ayuda con esto?</h3>
-                <p>Agenda una consulta gratuita y resolvemos tus dudas fiscales.</p>
-                <a href="/#contacto">Contáctanos</a>
+                <h3>¿Quieres dejar de cometer estos errores fiscales?</h3>
+                <p>Agenda una consulta gratuita y revisamos juntos tu situación fiscal para que pagues lo justo y sin sustos.</p>
+                <a href="/#contacto">Contáctanos hoy</a>
             </div>
 
         </article>
