@@ -17,22 +17,23 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- HEADER -->
     <header class="header">
-        <a href="#inicio" class="logo">
-            <img src="./solviemcirculo.png" alt="Logotipo de Solviem">
+        <a href="/" class="logo">
+            <img src="assets/img/solviemcirculo.png" alt="Logotipo de Solviem">
             <span>SOLVIEM</span>
         </a>
 
-        <nav>
-            <ul class="links">
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#proceso">Proceso</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="/blog/">Blog</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
+    <nav>
+        <ul class="links" id="main-nav">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#proceso">Proceso</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="blog/">Blog</a></li>
+            <li><a href="calculadoras/">Calculadoras</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>    
     </header>
 
     <!-- Content -->
@@ -60,7 +61,7 @@
                 </div>
             </div>
 
-            <img src="./0.png" alt="Ilustración de planeación financiera para emprendedores">
+            <img src="assets/img/0.png" alt="Ilustración de planeación financiera para emprendedores">
         </section>
 
         <!-- Services -->
@@ -71,7 +72,7 @@
 
                 <div class="card">
                     <h3>Diagnóstico Contable y Fiscal</h3>
-                    <img src="./1.png" alt="Diagnóstico contable y fiscal">
+                    <img src="assets/img/1.png" alt="Diagnóstico contable y fiscal">
                     <div class="text">
                         Revisamos tu situación ante el SAT, detectamos riesgos de multas y te mostramos en dónde estás dejando dinero sobre la mesa.
                     </div>
@@ -79,7 +80,7 @@
 
                 <div class="card">
                     <h3>Declaración de Impuestos y Cumplimiento SAT</h3>
-                    <img src="./2.png" alt="Declaraciones fiscales y cumplimiento ante el SAT">
+                    <img src="assets/img/2.png" alt="Declaraciones fiscales y cumplimiento ante el SAT">
                     <div class="text">
                         Presentamos tu declaración de ISR, IVA y demás obligaciones en tiempo y forma, para que nunca pagues un recargo de más.
                     </div>
@@ -87,7 +88,7 @@
 
                 <div class="card">
                     <h3>Devolución de Impuestos SAT</h3>
-                    <img src="./3.png" alt="Devolución y optimización de impuestos">
+                    <img src="assets/img/3.png" alt="Devolución y optimización de impuestos">
                     <div class="text">
                         Identificamos tu saldo a favor y gestionamos tu devolución de impuestos, aplicando cada deducción permitida a tu favor.
                     </div>
@@ -95,7 +96,7 @@
 
                 <div class="card">
                     <h3>Contabilidad Mensual para tu Negocio</h3>
-                    <img src="./4.png" alt="Contabilidad y asesoría mensual">
+                    <img src="assets/img/4.png" alt="Contabilidad y asesoría mensual">
                     <div class="text">
                         Llevamos tu contabilidad y conciliación mes a mes, con cifras claras y al día para que tomes mejores decisiones de negocio.
                     </div>
@@ -205,7 +206,7 @@
         Copyright © 2026 Solviem Consultoría Contable y Empresarial
     </footer>
 
-    <script>
+ <script>
         const form = document.getElementById('contact-form');
         const status = document.getElementById('form-status');
         const submitBtn = document.getElementById('form-submit');

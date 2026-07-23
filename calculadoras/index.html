@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Herramientas contables gratuitas: Calculadora de IVA, ISR y más. Simplifica tus cálculos fiscales con Solviem.">
+    <title>Calculadoras Contables Gratuitas | Solviem</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Estilos específicos para el index de calculadoras */
+        .calculadoras-grid {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .calculadoras-grid h1 {
+            font-size: 36px;
+            color: #02365D;
+            margin-bottom: 12px;
+        }
+
+        .calculadoras-grid .subtitle {
+            color: #6b7280;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .grid-item {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(2, 54, 93, 0.1);
+        }
+
+        .grid-item h3 {
+            color: #02365D;
+            margin: 0 0 8px 0;
+            font-size: 20px;
+        }
+
+        .grid-item p {
+            color: #6b7280;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .grid-item .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #02365D;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
+        .grid-item .badge.coming {
+            background: #e5e7eb;
+            color: #6b7280;
+        }
+
+        .grid-item.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .grid-item.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .icono-calculadora {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        @media (max-width: 640px) {
+            .calculadoras-grid {
+                margin: 30px auto;
+            }
+
+            .calculadoras-grid h1 {
+                font-size: 28px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="/" class="logo">
+            <img src="../assets/img/solviemcirculo.png" alt="Logotipo de Solviem">
+            <span>SOLVIEM</span>
+        </a>
+
+        <nav>
+            <ul class="links" id="main-nav">
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/calculadoras/">Calculadoras</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO -->
+    <main class="calculadoras-grid">
+        <h1>🧮 Calculadoras Contables</h1>
+        <p class="subtitle">
+            Herramientas gratuitas para ayudarte con tus cálculos fiscales y financieros.
+            Simplifica tu contabilidad con Solviem.
+        </p>
+
+        <div class="grid">
+            <!-- Calculadora de IVA -->
+            <a href="iva/" class="grid-item">
+                <span class="icono-calculadora">💰</span>
+                <h3>Calculadora de IVA</h3>
+                <p>Calcula el Impuesto al Valor Agregado al precio de tus productos o servicios. Soporta tasas del 16%, 8% y 0%.</p>
+                <span class="badge">Disponible</span>
+            </a>
+
+            <!-- Calculadora de ISR (futura) -->
+            <div class="grid-item disabled">
+                <span class="icono-calculadora">📊</span>
+                <h3>Calculadora de ISR</h3>
+                <p>Estima el Impuesto Sobre la Renta según tu régimen fiscal y nivel de ingresos.</p>
+                <span class="badge coming">Próximamente</span>
+            </div>
+
+            <!-- Calculadora de Préstamos (futura) -->
+            <div class="grid-item disabled">
+                <span class="icono-calculadora">🏦</span>
+                <h3>Calculadora de Préstamos</h3>
+                <p>Calcula el costo total de un préstamo, incluyendo intereses y plazos de pago.</p>
+                <span class="badge coming">Próximamente</span>
+            </div>
+
+            <!-- Calculadora de Utilidad (futura) -->
+            <div class="grid-item disabled">
+                <span class="icono-calculadora">📈</span>
+                <h3>Calculadora de Utilidad</h3>
+                <p>Determina el margen de utilidad de tus productos o servicios.</p>
+                <span class="badge coming">Próximamente</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        Copyright © 2026 Solviem Consultoría Contable y Empresarial
+    </footer>
+
+    <!-- Script para corregir enlaces -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Detectar si estamos en la página principal
+            const isHomePage = window.location.pathname === '/' || 
+                               window.location.pathname === '/index.html' ||
+                               window.location.pathname === '';
+            
+            if (!isHomePage) {
+                const navLinks = document.querySelectorAll('#main-nav a[href^="#"]');
+                navLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    link.setAttribute('href', '/' + href);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

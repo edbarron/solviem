@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora de IVA México 2026. Calcula el Impuesto al Valor Agregado al precio de tus productos o servicios. Tasa general 16%, frontera 8% y 0%. Aprende cómo se calcula y consejos prácticos.">
+    <title>Calculadora de IVA México | Solviem</title>
+    
+    <!-- CSS Global del landing -->
+    <link rel="stylesheet" href="../../style.css">
+    
+    <!-- CSS específico de calculadoras -->
+    <link rel="stylesheet" href="../../assets/css/calculadoras.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="/" class="logo">
+            <img src="../../assets/img/solviemcirculo.png" alt="Logotipo de Solviem">
+            <span>SOLVIEM</span>
+        </a>
+
+        <nav>
+            <ul class="links" id="main-nav">
+                <li><a href="/#servicios">Servicios</a></li>
+                <li><a href="/#proceso">Proceso</a></li>
+                <li><a href="/#nosotros">Nosotros</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/calculadoras/">Calculadoras</a></li>
+                <li><a href="/#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO DE LA CALCULADORA -->
+    <main class="calculadora-container">
+        
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <a href="/">Inicio</a> / 
+            <a href="/calculadoras/">Calculadoras</a> / 
+            <span>Calculadora de IVA México</span>
+        </nav>
+
+        <h1>Calculadora de IVA México</h1>
+        <p class="subtitle">
+            Calcula de forma rápida y simple el Impuesto al Valor Agregado y conoce 
+            cómo afecta el precio de los productos y servicios que compras o vendes.
+        </p>
+
+        <!-- SECCIÓN 1: Precio + IVA -->
+        <section class="calculadora-section">
+            <h2 class="section-title">Calcular precio más IVA</h2>
+            <p class="section-description">Cuando el precio no tiene el IVA agregado.</p>
+
+            <div class="calculadora-card">
+                <div class="input-group">
+                    <label for="precioBase">Ingrese la cantidad a calcular:</label>
+                    <div class="input-wrapper">
+                        <span class="currency-symbol">$</span>
+                        <input type="number" id="precioBase" value="0.00" step="0.01" min="0">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="tasaIVA">Tasa de IVA:</label>
+                    <div class="input-wrapper">
+                        <select id="tasaIVA">
+                            <option value="16">16% - Tasa general</option>
+                            <option value="8">8% - Zona fronteriza</option>
+                            <option value="0">0% - Tasa especial</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="results">
+                    <div class="result-item">
+                        <span class="result-label">Cantidad sin IVA:</span>
+                        <span class="result-value" id="sinIVA">$ ---</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">IVA (<span id="tasaMostrada">16</span>%):</span>
+                        <span class="result-value" id="ivaCalculado">$ ---</span>
+                    </div>
+                    <div class="result-item total">
+                        <span class="result-label">Total con IVA:</span>
+                        <span class="result-value" id="totalConIVA">$ ---</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: Precio - IVA -->
+        <section class="calculadora-section">
+            <h2 class="section-title">Calcular precio menos IVA</h2>
+            <p class="section-description">Cuando el precio ya tiene el IVA agregado.</p>
+
+            <div class="calculadora-card">
+                <div class="input-group">
+                    <label for="precioTotal">Ingrese la cantidad a calcular:</label>
+                    <div class="input-wrapper">
+                        <span class="currency-symbol">$</span>
+                        <input type="number" id="precioTotal" value="0.00" step="0.01" min="0">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="tasaIVA2">Tasa de IVA:</label>
+                    <div class="input-wrapper">
+                        <select id="tasaIVA2">
+                            <option value="16">16% - Tasa general</option>
+                            <option value="8">8% - Zona fronteriza</option>
+                            <option value="0">0% - Tasa especial</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="results">
+                    <div class="result-item">
+                        <span class="result-label">Total con IVA:</span>
+                        <span class="result-value" id="totalConIVA2">$ ---</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">IVA (<span id="tasaMostrada2">16</span>%):</span>
+                        <span class="result-value" id="ivaCalculado2">$ ---</span>
+                    </div>
+                    <div class="result-item total">
+                        <span class="result-label">Cantidad sin IVA:</span>
+                        <span class="result-value" id="sinIVA2">$ ---</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN EDUCATIVA: ¿Qué es el IVA? -->
+        <section class="iva-info">
+
+            <h2>¿Qué es el IVA y cómo funciona en México?</h2>
+            <p>
+                El <strong>IVA (Impuesto al Valor Agregado)</strong> es un impuesto indirecto que se cobra
+                sobre la venta de la mayoría de los productos y servicios en México. La tasa general es del
+                <strong>16%</strong>, aunque existen tasas especiales del <strong>8% en zona fronteriza</strong>
+                y del <strong>0%</strong> para ciertos productos y servicios definidos por el SAT (como alimentos
+                básicos, medicinas o exportaciones).
+            </p>
+            <p>
+                Lo importante es entender que el IVA no es una ganancia para tu negocio: es dinero que
+                <strong>recaudas a nombre del SAT</strong>. Tu empresa solo actúa como intermediaria entre
+                el consumidor final y la autoridad fiscal.
+            </p>
+
+            <h3>¿Cómo se calcula el IVA que realmente debes pagar?</h3>
+            <p>
+                Aquí está el consejo práctico que muchos freelancers y pymes no conocen: para saber cuánto
+                IVA le debes al SAT cada mes, no necesitas una fórmula complicada. Solo tienes que restar:
+            </p>
+            <div class="iva-formula">
+                <strong>IVA trasladado</strong> (el que cobras a tus clientes en tus facturas)
+                <br>− 
+                <strong>IVA acreditable</strong> (el que tú pagaste al comprar insumos, servicios o herramientas para tu negocio)
+                <br>= 
+                <strong>IVA a pagar (o saldo a favor)</strong>
+            </div>
+            <p>
+                Si el resultado es positivo, ese es el monto que le debes declarar y pagar al SAT. Si es
+                negativo, tienes un <strong>saldo a favor</strong> que puedes solicitar en devolución o
+                compensar en declaraciones futuras.
+            </p>
+
+            <h4>Ejemplo práctico</h4>
+            <p>
+                Imagina que eres freelancer y en el mes facturaste <strong>$20,000</strong> por tus
+                servicios, cobrando el 16% de IVA. Ese mes también compraste una laptop y pagaste algunos
+                servicios para tu trabajo, por un total de <strong>$8,000</strong> más su IVA
+                correspondiente.
+            </p>
+            <ul class="iva-example">
+                <li><strong>IVA trasladado:</strong> $20,000 × 16% = $3,200 (lo que cobraste a tus clientes)</li>
+                <li><strong>IVA acreditable:</strong> $8,000 × 16% = $1,280 (lo que tú pagaste en tus compras)</li>
+                <li><strong>IVA a pagar:</strong> $3,200 − $1,280 = <strong>$1,920</strong></li>
+            </ul>
+            <p>
+                Ese sería el monto que le corresponde declarar y pagar al SAT ese mes. Si en cambio hubieras
+                gastado más de lo que facturaste, el resultado sería negativo y tendrías un
+                <strong>saldo a favor</strong> en lugar de un pago.
+            </p>
+
+            <h3>Consejos prácticos para llevar tu IVA al día</h3>
+            <ul class="iva-tips">
+                <li>
+                    <strong>Guarda todos tus CFDI de gastos</strong>, no solo los de ingresos. Sin factura no
+                    hay IVA acreditable, y eso significa pagar más de lo necesario.
+                </li>
+                <li>
+                    <strong>Concilia tu IVA cada mes</strong>, no hasta la declaración anual. Los errores se
+                    acumulan y son más difíciles de corregir con el tiempo.
+                </li>
+                <li>
+                    <strong>Verifica la tasa correcta</strong> de cada producto o servicio. Aplicar 16% cuando
+                    corresponde 0% (o viceversa) es un error común que genera diferencias con el SAT.
+                </li>
+                <li>
+                    <strong>No confundas IVA con ISR.</strong> Son impuestos distintos, con reglas y
+                    cálculos diferentes, y ambos deben declararse correctamente.
+                </li>
+                <li>
+                    <strong>Si tienes saldo a favor recurrente</strong>, revisa tu situación con un contador:
+                    podrías estar dejando dinero sin recuperar mes tras mes.
+                </li>
+            </ul>
+
+            <h3>Preguntas frecuentes sobre el IVA</h3>
+
+            <details class="iva-faq">
+                <summary><strong>¿Todos los productos pagan la misma tasa de IVA?</strong></summary>
+                <p>
+                    No. La mayoría de productos y servicios pagan la <strong>tasa general del 16%</strong>,
+                    pero hay excepciones con tasa del <strong>0%</strong> (como alimentos básicos, libros o
+                    exportaciones) y del <strong>8%</strong> en la zona fronteriza del país.
+                </p>
+            </details>
+
+            <details class="iva-faq">
+                <summary><strong>¿Qué pasa si cobro IVA pero no lo declaro a tiempo?</strong></summary>
+                <p>
+                    Genera recargos y actualizaciones que crecen mes con mes, además del riesgo de multas
+                    por parte del SAT. Es preferible declarar a tiempo, incluso si el monto es bajo.
+                </p>
+            </details>
+
+            <details class="iva-faq">
+                <summary><strong>¿Puedo recuperar el IVA que pago en mis gastos?</strong></summary>
+                <p>
+                    Sí, siempre que tengas el <strong>CFDI correspondiente</strong> y el gasto esté
+                    relacionado con tu actividad económica. Ese IVA se convierte en IVA acreditable.
+                </p>
+            </details>
+
+        </section>
+
+        <!-- CALL TO ACTION -->
+        <div class="calculadora-cta">
+            <p>¿Necesitas ayuda con tu declaración de impuestos?</p>
+            <p>En Solviem te ayudamos a calcular y presentar tu declaración de IVA sin errores.</p>
+            <a href="/#contacto" class="btn-cta">Agenda una consulta</a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        Copyright © 2026 Solviem Consultoría Contable y Empresarial
+    </footer>
+
+    <!-- JavaScript específico de IVA -->
+    <script src="../../js/calculadoras/utils.js"></script>
+    <script src="../../js/calculadoras/iva.js"></script>
+
+    <!-- Datos estructurados FAQ para SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Todos los productos pagan la misma tasa de IVA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. La mayoría de productos y servicios pagan la tasa general del 16%, pero hay excepciones con tasa del 0% (como alimentos básicos, libros o exportaciones) y del 8% en la zona fronteriza del país."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si cobro IVA pero no lo declaro a tiempo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Genera recargos y actualizaciones que crecen mes con mes, además del riesgo de multas por parte del SAT. Es preferible declarar a tiempo, incluso si el monto es bajo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo recuperar el IVA que pago en mis gastos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, siempre que tengas el CFDI correspondiente y el gasto esté relacionado con tu actividad económica. Ese IVA se convierte en IVA acreditable."
+          }
+        }
+      ]
+    }
+    </script>
+
+</body>
+</html>
