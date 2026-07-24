@@ -24,6 +24,17 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px clamp(40px, 8vw, 200px);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+}
+
+#header-placeholder {
+    min-height: 88px;
+    background: #012A47;
+    position: sticky;
+    top: 0;
+    z-index: 200;
 }
 
 .logo {
@@ -458,5 +469,97 @@ body {
 
     .article-cta {
         padding: 30px 24px;
+    }
+}
+
+/* NAV DROPDOWNS (Empresa / Herramientas / Blog) */
+
+#main-nav {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    align-items: center;
+}
+
+.has-dropdown {
+    position: relative;
+}
+
+.nav-toggle {
+    background: none;
+    border: none;
+    font: inherit;
+    color: #e2e8f0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 0;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.nav-toggle:hover {
+    color: white;
+}
+
+.chevron {
+    transition: transform 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    list-style: none;
+    padding: 8px;
+    margin-top: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    z-index: 100;
+}
+
+.has-dropdown.open .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown li a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    color: #1f2937;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.dropdown li a:hover {
+    background: #f4f6f8;
+}
+
+.dropdown-viewall {
+    border-top: 1px solid #eee;
+    margin-top: 4px;
+    padding-top: 4px;
+}
+
+/* Bonus: abrir también con hover en pantallas grandes */
+@media (hover: hover) and (pointer: fine) {
+    .has-dropdown:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 }
