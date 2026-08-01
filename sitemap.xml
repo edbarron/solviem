@@ -48,6 +48,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://solviem.com/blog/tramitar-contrasena-sat-saldo-a-favor.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <!-- Calculadoras -->
   <url>
