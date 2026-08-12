@@ -1,0 +1,431 @@
+/* ============================================
+   COTIZADOR - ESTILOS ESPECÍFICOS
+   Hereda paleta de marca de style.css:
+   #02365D (primario) / #012A47 (oscuro)
+   ============================================ */
+
+.cotizador-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 18px 0 28px;
+}
+
+.cotizador-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #dbeafe;
+    color: #02365D;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cotizador-badge.autosave {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+/* CONTENEDOR PRINCIPAL DEL DOCUMENTO */
+
+.cotizador-doc {
+    --cot-accent: #02365D;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 10px 35px rgba(2, 54, 93, 0.08);
+    padding: clamp(24px, 4vw, 48px);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cotizador-doc input,
+.cotizador-doc textarea,
+.cotizador-doc select {
+    font-family: inherit;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 6px 8px;
+    background: transparent;
+    color: #1f2937;
+    transition: border-color 0.15s, background 0.15s;
+    width: 100%;
+}
+
+.cotizador-doc input:hover,
+.cotizador-doc textarea:hover,
+.cotizador-doc select:hover {
+    background: #f8fafc;
+}
+
+.cotizador-doc input:focus,
+.cotizador-doc textarea:focus,
+.cotizador-doc select:focus {
+    outline: none;
+    border-color: var(--cot-accent);
+    background: #f8fafc;
+}
+
+.cotizador-doc input::placeholder,
+.cotizador-doc textarea::placeholder {
+    color: #9ca3af;
+}
+
+/* ZONA DE LOGO */
+
+.logo-uploader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.logo-box {
+    width: 96px;
+    height: 96px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #f8fafc;
+}
+
+.logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: none;
+}
+
+.logo-box .logo-placeholder {
+    font-size: 11px;
+    color: #94a3b8;
+    text-align: center;
+    padding: 6px;
+}
+
+.logo-uploader label.upload-btn {
+    display: inline-block;
+    background: #eff6ff;
+    color: #02365D;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logo-uploader label.upload-btn:hover {
+    background: #dbeafe;
+}
+
+.logo-uploader input[type="file"] {
+    display: none;
+}
+
+/* ENCABEZADO DE LA COTIZACIÓN (número, fecha, moneda...) */
+
+.cotizador-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 18px 24px;
+    margin-bottom: 32px;
+}
+
+.cotizador-meta .campo label,
+.cotizador-doc .campo label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.cotizador-meta input[type="text"],
+.cotizador-meta input[type="date"] {
+    font-weight: 600;
+    color: var(--cot-accent);
+}
+
+.cotizador-meta input[type="color"] {
+    height: 36px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+/* SECCIONES EMPRESA / CLIENTE */
+
+.cotizador-partes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 32px;
+}
+
+.parte-bloque h3 {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--cot-accent);
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--cot-accent);
+}
+
+.parte-bloque .campo {
+    margin-bottom: 12px;
+}
+
+@media (max-width: 700px) {
+    .cotizador-partes {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* TABLA DE PRODUCTOS */
+
+.cotizador-items-wrap {
+    margin-bottom: 24px;
+    overflow-x: auto;
+}
+
+.cotizador-items-wrap h3 {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--cot-accent);
+    margin: 0 0 14px;
+}
+
+table.cotizador-items {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 560px;
+}
+
+table.cotizador-items thead th {
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+    padding: 6px 8px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+table.cotizador-items thead th.col-num {
+    text-align: right;
+}
+
+table.cotizador-items tbody td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+table.cotizador-items .item-cantidad,
+table.cotizador-items .item-precio,
+table.cotizador-items .item-descuento {
+    text-align: right;
+}
+
+table.cotizador-items .item-total {
+    text-align: right;
+    font-weight: 700;
+    color: var(--cot-accent);
+    white-space: nowrap;
+    padding: 4px 8px;
+}
+
+.btn-remove-item {
+    background: none;
+    border: none;
+    color: #cbd5e1;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: 0.15s;
+}
+
+.btn-remove-item:hover {
+    color: #ef4444;
+    background: #fef2f2;
+}
+
+.items-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+.btn-item-action {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    color: #334155;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-item-action:hover {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: var(--cot-accent);
+}
+
+/* NOTAS / CONDICIONES */
+
+.cotizador-notas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.cotizador-notas textarea {
+    min-height: 80px;
+    resize: vertical;
+    border: 1px solid #e5e7eb !important;
+    background: #f8fafc !important;
+}
+
+@media (max-width: 700px) {
+    .cotizador-notas {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* TOTALES */
+
+.cotizador-totales {
+    margin-left: auto;
+    max-width: 340px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 15px;
+    gap: 12px;
+}
+
+.total-row label {
+    color: #64748b;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.total-row .porcentaje-input {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.total-row .porcentaje-input input {
+    width: 56px;
+    text-align: right;
+    border: 1px solid #e5e7eb !important;
+}
+
+.total-row .valor {
+    font-weight: 600;
+    color: #334155;
+    white-space: nowrap;
+}
+
+.total-row.final {
+    border-bottom: none;
+    border-top: 2px solid var(--cot-accent);
+    margin-top: 6px;
+    padding-top: 14px;
+}
+
+.total-row.final label {
+    color: var(--cot-accent);
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.total-row.final .valor {
+    color: var(--cot-accent);
+    font-weight: 800;
+    font-size: 22px;
+}
+
+/* ACCIONES FINALES (fuera del documento) */
+
+.cotizador-acciones {
+    max-width: 900px;
+    margin: 24px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-descargar-pdf {
+    background: #02365D;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-descargar-pdf:hover {
+    background: #012A47;
+}
+
+.btn-descargar-pdf:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-limpiar {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.btn-limpiar:hover {
+    color: #ef4444;
+}
+
+/* Elementos que se ocultan al capturar el PDF (botones de edición) */
+.cotizador-doc.capturando-pdf .no-pdf {
+    visibility: hidden;
+}
+
+.cotizador-doc.capturando-pdf input,
+.cotizador-doc.capturando-pdf textarea,
+.cotizador-doc.capturando-pdf select {
+    background: transparent !important;
+}

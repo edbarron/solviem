@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crea cotizaciones profesionales gratis en México. Editor online con tu logo, datos fiscales, productos, IVA y descarga en PDF. Sin registro.">
+    <title>Crear Cotización Online Gratis México | Solviem</title>
+
+    <!-- CSS Global del landing -->
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- CSS específico de calculadoras -->
+    <link rel="stylesheet" href="../../assets/css/calculadoras.css">
+
+    <!-- CSS específico del cotizador -->
+    <link rel="stylesheet" href="../../assets/css/cotizador.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div id="header-placeholder"></div>
+
+    <!-- CONTENIDO -->
+    <main class="calculadora-container">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <a href="/">Inicio</a> /
+            <a href="/calculadoras/">Calculadoras</a> /
+            <span>Cotizador</span>
+        </nav>
+
+        <h1>Crear Cotización Online Gratis</h1>
+        <p class="subtitle">
+            Genera cotizaciones profesionales para tus clientes en minutos: agrega tu logo, datos fiscales,
+            productos o servicios, aplica IVA y descarga el PDF listo para enviar.
+        </p>
+
+        <div class="cotizador-toolbar">
+            <span class="cotizador-badge">Editable en vivo</span>
+            <span class="cotizador-badge autosave" id="autosaveStatus">Guardado local activo</span>
+            <span class="cotizador-badge">PDF en tu navegador</span>
+            <span class="cotizador-badge">Sin registro</span>
+        </div>
+
+        <!-- DOCUMENTO / EDITOR DE COTIZACIÓN -->
+        <div class="cotizador-doc" id="cotizacionPreview">
+
+            <!-- LOGO -->
+            <div class="logo-uploader no-pdf">
+                <div class="logo-box">
+                    <img id="logoPreview" alt="Logo de la empresa">
+                    <span class="logo-placeholder" id="logoPlaceholder">SUBIR<br>LOGO</span>
+                </div>
+                <label class="upload-btn" for="logoInput">Subir logo de tu empresa</label>
+                <input type="file" id="logoInput" accept="image/*">
+            </div>
+
+            <!-- META: número, fecha, validez, color, moneda, forma de pago -->
+            <div class="cotizador-meta">
+                <div class="campo">
+                    <label for="cotNumero">N.º de cotización</label>
+                    <input type="text" id="cotNumero" value="COT-0001">
+                </div>
+                <div class="campo">
+                    <label for="cotFecha">Fecha</label>
+                    <input type="date" id="cotFecha">
+                </div>
+                <div class="campo">
+                    <label for="cotValidez">Válida hasta</label>
+                    <input type="date" id="cotValidez">
+                </div>
+                <div class="campo">
+                    <label for="cotColor">Color de la cotización</label>
+                    <input type="color" id="cotColor" value="#02365D">
+                </div>
+                <div class="campo">
+                    <label for="cotMoneda">Moneda</label>
+                    <select id="cotMoneda">
+                        <option value="MXN">MXN — Peso mexicano</option>
+                        <option value="USD">USD — Dólar</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label for="formaPago">Forma de pago</label>
+                    <input type="text" id="formaPago" placeholder="Ej: 50% anticipo, 50% contra entrega">
+                </div>
+            </div>
+
+            <!-- EMPRESA / CLIENTE -->
+            <div class="cotizador-partes">
+                <div class="parte-bloque">
+                    <h3>EMPRESA</h3>
+                    <div class="campo">
+                        <label for="empNombre">Empresa</label>
+                        <input type="text" id="empNombre" placeholder="Nombre de tu empresa">
+                    </div>
+                    <div class="campo">
+                        <label for="empRFC">RFC</label>
+                        <input type="text" id="empRFC" placeholder="XAXX010101000">
+                    </div>
+                    <div class="campo">
+                        <label for="empDireccion">Dirección</label>
+                        <input type="text" id="empDireccion" placeholder="Dirección comercial">
+                    </div>
+                    <div class="campo">
+                        <label for="empWeb">Sitio web</label>
+                        <input type="text" id="empWeb" placeholder="www.tuempresa.com">
+                    </div>
+                    <div class="campo">
+                        <label for="empEjecutivo">Ejecutivo</label>
+                        <input type="text" id="empEjecutivo" placeholder="Nombre ejecutivo">
+                    </div>
+                    <div class="campo">
+                        <label for="empEmail">Email ejecutivo</label>
+                        <input type="text" id="empEmail" placeholder="ventas@empresa.com">
+                    </div>
+                    <div class="campo">
+                        <label for="empTelefono">Teléfono ejecutivo</label>
+                        <input type="text" id="empTelefono" placeholder="+52 55 0000 0000">
+                    </div>
+                </div>
+
+                <div class="parte-bloque">
+                    <h3>CLIENTE</h3>
+                    <div class="campo">
+                        <label for="cliNombre">Cliente / Empresa</label>
+                        <input type="text" id="cliNombre" placeholder="Nombre del cliente">
+                    </div>
+                    <div class="campo">
+                        <label for="cliRFC">RFC</label>
+                        <input type="text" id="cliRFC" placeholder="Identificación fiscal">
+                    </div>
+                    <div class="campo">
+                        <label for="cliDireccion">Dirección</label>
+                        <input type="text" id="cliDireccion" placeholder="Dirección del cliente">
+                    </div>
+                    <div class="campo">
+                        <label for="cliContacto">Contacto</label>
+                        <input type="text" id="cliContacto" placeholder="Persona de contacto">
+                    </div>
+                    <div class="campo">
+                        <label for="cliEmail">Email</label>
+                        <input type="text" id="cliEmail" placeholder="cliente@empresa.com">
+                    </div>
+                    <div class="campo">
+                        <label for="cliTelefono">Teléfono</label>
+                        <input type="text" id="cliTelefono" placeholder="+52 55 0000 0000">
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCTOS / SERVICIOS -->
+            <div class="cotizador-items-wrap">
+                <h3>Productos o servicios</h3>
+                <table class="cotizador-items">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th class="col-num">Cant.</th>
+                            <th class="col-num">Precio</th>
+                            <th class="col-num">Desc. %</th>
+                            <th class="col-num">Total</th>
+                            <th class="no-pdf"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsBody">
+                        <!-- Filas generadas por JS -->
+                    </tbody>
+                </table>
+                <div class="items-actions no-pdf">
+                    <button type="button" class="btn-item-action" id="addItemBtn">+ Agregar ítem</button>
+                    <button type="button" class="btn-item-action" id="duplicateItemBtn">Duplicar último</button>
+                </div>
+            </div>
+
+            <!-- NOTAS / CONDICIONES -->
+            <div class="cotizador-notas">
+                <div class="campo">
+                    <label for="notasTexto">Notas</label>
+                    <textarea id="notasTexto" placeholder="Ej: Los valores consideran implementación estándar."></textarea>
+                </div>
+                <div class="campo">
+                    <label for="condicionesTexto">Condiciones</label>
+                    <textarea id="condicionesTexto" placeholder="Ej: Cotización válida por 15 días. Precios no incluyen servicios no detallados."></textarea>
+                </div>
+            </div>
+
+            <!-- TOTALES -->
+            <div class="cotizador-totales">
+                <div class="total-row">
+                    <label>Subtotal</label>
+                    <span class="valor" id="subtotalDisplay">$ 0.00</span>
+                </div>
+                <div class="total-row">
+                    <label>Descuento global</label>
+                    <div class="porcentaje-input no-pdf">
+                        <input type="number" id="descGlobalPorcentaje" value="0" min="0" max="100" step="1">
+                        <span>%</span>
+                    </div>
+                    <span class="valor" id="descGlobalMonto">$ 0.00</span>
+                </div>
+                <div class="total-row">
+                    <label>Impuesto (IVA)</label>
+                    <div class="porcentaje-input no-pdf">
+                        <input type="number" id="impuestoPorcentaje" value="16" min="0" max="100" step="1">
+                        <span>%</span>
+                    </div>
+                    <span class="valor" id="impuestoMonto">$ 0.00</span>
+                </div>
+                <div class="total-row final">
+                    <label>Total</label>
+                    <span class="valor" id="totalFinal">$ 0.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACCIONES -->
+        <div class="cotizador-acciones">
+            <button type="button" class="btn-descargar-pdf" id="descargarPdfBtn">Descargar PDF</button>
+            <button type="button" class="btn-limpiar" id="limpiarBtn">Borrar y empezar de nuevo</button>
+        </div>
+
+        <!-- SECCIÓN EDUCATIVA -->
+        <section class="iva-info">
+
+            <h2>Cómo hacer una cotización profesional en México</h2>
+            <p>
+                Una cotización clara reduce errores, mejora la percepción de tu negocio ante el cliente y
+                facilita el cierre de la venta. No es un documento fiscal (no sustituye a una factura o CFDI),
+                pero sí es la base sobre la que después se factura, así que vale la pena hacerla bien.
+            </p>
+
+            <h3>1. Identifica claramente a tu empresa y a tu cliente</h3>
+            <p>
+                Incluye tu razón social y RFC, y los mismos datos del cliente si están disponibles. Agrega
+                también quién es la persona responsable de la cotización (ejecutivo de ventas) y sus datos de
+                contacto, para que el cliente sepa a quién responder.
+            </p>
+
+            <h3>2. Detalla cada producto o servicio</h3>
+            <p>
+                Evita agrupar conceptos distintos en una sola línea. Describe cada ítem, su cantidad, precio
+                unitario y cualquier descuento aplicado. Esto evita confusiones y da más profesionalismo al
+                documento, además de facilitar la comparación si el cliente está cotizando con varios
+                proveedores.
+            </p>
+
+            <h3>3. Define totales, IVA y condiciones con claridad</h3>
+            <p>
+                En México la tasa general de IVA es del <strong>16%</strong>, aunque existen tasas reducidas
+                para ciertos productos, servicios o zonas específicas. Especifica siempre si tus precios
+                incluyen IVA o no, la vigencia de la cotización (comúnmente 15 a 30 días) y la forma de pago
+                propuesta (anticipo, contra entrega, crédito, etc.).
+            </p>
+
+            <h3>Diferencia entre cotización y factura</h3>
+            <p>
+                Una cotización es una propuesta comercial: no tiene validez fiscal ni obligación de pago para
+                el cliente, solo comunica condiciones y precios. Una factura (CFDI) sí es un comprobante
+                fiscal timbrado ante el SAT, y se emite una vez que la venta se concreta. Esta herramienta
+                genera cotizaciones, no facturas.
+            </p>
+
+            <h3>Preguntas frecuentes sobre cotizaciones</h3>
+
+            <details class="iva-faq">
+                <summary><strong>¿Esta cotización tiene validez fiscal ante el SAT?</strong></summary>
+                <p>
+                    No. Es un documento comercial informativo para presentar precios y condiciones a un
+                    cliente. Para timbrar una venta ante el SAT necesitas emitir un CFDI a través de un
+                    proveedor autorizado de facturación electrónica.
+                </p>
+            </details>
+
+            <details class="iva-faq">
+                <summary><strong>¿Cuánto tiempo debería durar la vigencia de una cotización?</strong></summary>
+                <p>
+                    Depende de tu giro, pero lo más común en México es entre 15 y 30 días. Si tus costos
+                    varían mucho (insumos importados, tipo de cambio, etc.), conviene acortar ese plazo.
+                </p>
+            </details>
+
+            <details class="iva-faq">
+                <summary><strong>¿Puedo hacer cotizaciones en dólares?</strong></summary>
+                <p>
+                    Sí, esta herramienta permite elegir entre pesos mexicanos (MXN) y dólares (USD). Si
+                    cotizas en dólares, es recomendable aclarar en las condiciones el tipo de cambio de
+                    referencia o la fecha en que se fijará.
+                </p>
+            </details>
+
+            <details class="iva-faq">
+                <summary><strong>¿Se guardan mis datos en algún servidor?</strong></summary>
+                <p>
+                    No. Todo lo que escribes se guarda únicamente en el navegador de tu propio equipo
+                    (almacenamiento local), y el PDF se genera también en tu navegador. Nadie más tiene
+                    acceso a esta información.
+                </p>
+            </details>
+
+        </section>
+
+        <!-- CALL TO ACTION -->
+        <div class="calculadora-cta">
+            <p>¿Cotizas seguido y quieres llevar un mejor control?</p>
+            <p>En Solviem te ayudamos a ordenar tu proceso comercial y fiscal, desde tus cotizaciones hasta tu declaración de impuestos.</p>
+            <a href="/#contacto" class="btn-cta">Agenda una consulta</a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        Copyright © 2026 Solviem Consultoría Contable y Empresarial
+    </footer>
+
+    <!-- WhatsApp floating button -->
+    <a href="https://wa.me/526678421992?text=Hola%2C%20le%C3%AD%20su%20art%C3%ADculo%20y%20me%20interesa%20una%20consulta"
+       class="whatsapp-float"
+       target="_blank"
+       rel="noopener"
+       aria-label="Escríbenos por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.05-1.33A9.93 9.93 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.18c-1.63 0-3.16-.46-4.46-1.25l-.32-.19-3.32.87.89-3.24-.21-.33A8.16 8.16 0 0 1 3.82 12c0-4.52 3.67-8.18 8.18-8.18s8.18 3.67 8.18 8.18-3.66 8.18-8.18 8.18zm4.49-6.13c-.25-.12-1.45-.71-1.67-.79-.22-.08-.39-.12-.55.13-.16.24-.63.79-.78.95-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.99-1.22-.74-.65-1.23-1.46-1.38-1.71-.14-.24-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.55-.42-.14-.01-.3-.01-.46-.01s-.43.06-.65.31c-.22.24-.86.84-.86 2.05s.88 2.37 1 2.54c.13.16 1.74 2.65 4.21 3.71.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.45-.59 1.65-1.16.21-.57.21-1.06.14-1.16-.06-.11-.22-.17-.47-.29z"/>
+        </svg>
+    </a>
+
+    <!-- Librerías para generar el PDF en el navegador -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- JavaScript específico del cotizador -->
+    <script src="../../js/calculadoras/cotizador.js"></script>
+    <script src="/js/header-loader.js"></script>
+
+    <!-- Script para corregir enlaces del menú fuera del home -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const isHomePage = window.location.pathname === '/' ||
+                               window.location.pathname === '/index.html' ||
+                               window.location.pathname === '';
+
+            if (!isHomePage) {
+                const navLinks = document.querySelectorAll('#main-nav a[href^="#"]');
+                navLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    link.setAttribute('href', '/' + href);
+                });
+            }
+        });
+    </script>
+
+    <!-- Datos estructurados FAQ para SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Esta cotización tiene validez fiscal ante el SAT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Es un documento comercial informativo para presentar precios y condiciones a un cliente. Para timbrar una venta ante el SAT necesitas emitir un CFDI a través de un proveedor autorizado de facturación electrónica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tiempo debería durar la vigencia de una cotización?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende de tu giro, pero lo más común en México es entre 15 y 30 días. Si tus costos varían mucho, conviene acortar ese plazo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo hacer cotizaciones en dólares?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, la herramienta permite elegir entre pesos mexicanos (MXN) y dólares (USD)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Se guardan mis datos en algún servidor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Todo se guarda únicamente en el navegador del usuario y el PDF se genera también en el navegador, sin enviarse a ningún servidor."
+          }
+        }
+      ]
+    }
+    </script>
+
+</body>
+</html>
