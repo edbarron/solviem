@@ -12,7 +12,7 @@
                     Blog
                     <svg class="chevron" viewBox="0 0 12 12" width="10" height="10"><path d="M2 4l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
                 </button>
-                <ul class="dropdown">
+                <ul class="dropdown" id="navBlogList">
                     <li><a href="/blog/que-pasa-si-no-declaras-a-tiempo.html">¿Qué pasa si no declaras a tiempo?</a></li>
                     <li><a href="/blog/como-saber-saldo-a-favor.html">Cómo saber tu saldo a favor</a></li>
                     <li><a href="/blog/errores-fiscales-freelancers.html">Errores fiscales de freelancers</a></li>
@@ -25,9 +25,10 @@
                     Herramientas
                     <svg class="chevron" viewBox="0 0 12 12" width="10" height="10"><path d="M2 4l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
                 </button>
-                <ul class="dropdown">
+                <ul class="dropdown" id="navHerramientasList">
                     <li><a href="/calculadoras/iva/">Calculadora de IVA</a></li>
-                    <!-- Agrega aquí futuras herramientas -->
+                    <li><a href="/calculadoras/cotizador/">Cotizador Online</a></li>
+                    <!-- Estos <li> son un respaldo estático por si falla la carga dinámica; el JS los reemplaza -->
                     <li class="dropdown-viewall"><a href="/calculadoras/">Ver todas →</a></li>
                 </ul>
             </li>
