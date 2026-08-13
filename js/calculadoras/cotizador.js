@@ -265,30 +265,68 @@ document.addEventListener('DOMContentLoaded', function () {
             const canvas = await html2canvas(cotizacionPreview, {
                 scale: 2,
                 backgroundColor: '#ffffff',
-                useCORS: true
+                useCORS: true,
+                // Al clonar el documento para capturarlo, cambiamos cada input/textarea
+                // por texto plano: html2canvas no siempre calcula bien la línea base del
+                // texto dentro de campos de formulario y lo corta a la mitad.
+                onclone: function (clonedDoc) {
+                    const clonedPreview = clonedDoc.getElementById('cotizacionPreview');
+                    if (!clonedPreview) return;
+
+                    clonedPreview.querySelectorAll('input, textarea').forEach(function (campo) {
+                        const estilos = window.getComputedStyle(campo);
+                        const reemplazo = document.createElement(campo.tagName === 'TEXTAREA' ? 'div' : 'span');
+
+                        if (campo.type === 'color') {
+                            // El selector de color se sustituye por un swatch, no por su valor hexadecimal
+                            reemplazo.style.display = 'inline-block';
+                            reemplazo.style.width = '28px';
+                            reemplazo.style.height = '28px';
+                            reemplazo.style.borderRadius = '6px';
+                            reemplazo.style.background = campo.value;
+                            reemplazo.style.border = '1px solid #e5e7eb';
+                        } else if (campo.tagName === 'SELECT') {
+                            reemplazo.textContent = campo.options[campo.selectedIndex] ? campo.options[campo.selectedIndex].text : '';
+                        } else {
+                            reemplazo.textContent = campo.value || '';
+                        }
+
+                        // Copiamos el tipo de letra, tamaño, color y alineación tal cual se ven en pantalla
+                        reemplazo.style.font = estilos.font;
+                        reemplazo.style.color = estilos.color;
+                        reemplazo.style.textAlign = estilos.textAlign;
+                        reemplazo.style.padding = estilos.padding;
+                        reemplazo.style.whiteSpace = campo.tagName === 'TEXTAREA' ? 'pre-wrap' : 'nowrap';
+                        reemplazo.style.width = estilos.width;
+                        reemplazo.style.display = campo.type === 'color' ? 'inline-block' : (campo.tagName === 'TEXTAREA' ? 'block' : 'inline-block');
+
+                        campo.replaceWith(reemplazo);
+                    });
+
+                    // También reemplazamos el <select> de moneda si quedó alguno suelto fuera del bucle anterior
+                    clonedPreview.querySelectorAll('select').forEach(function (sel) {
+                        const span = document.createElement('span');
+                        span.textContent = sel.options[sel.selectedIndex] ? sel.options[sel.selectedIndex].text : '';
+                        sel.replaceWith(span);
+                    });
+                }
             });
 
             const { jsPDF } = window.jspdf;
             const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'letter' });
 
-            const pageWidth = pdf.internal.pageSize.getWidth();
-            const pageHeight = pdf.internal.pageSize.getHeight();
-            const imgWidth = pageWidth;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            // Tamaño del PDF a la medida exacta de lo capturado, para que siempre quepa en una sola página
+            const pxToPt = 0.75; // 1px (96dpi) ≈ 0.75pt
+            const pdfWidth = (canvas.width / 2) * pxToPt;   // /2 porque se capturó con scale: 2
+            const pdfHeight = (canvas.height / 2) * pxToPt;
 
-            let heightLeft = imgHeight;
-            let position = 0;
+            const pdf = new jsPDF({
+                orientation: pdfWidth > pdfHeight ? 'landscape' : 'portrait',
+                unit: 'pt',
+                format: [pdfWidth, pdfHeight]
+            });
 
-            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-
-            while (heightLeft > 0) {
-                position = heightLeft - imgHeight;
-                pdf.addPage();
-                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
-            }
+            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
 
             const numeroLimpio = (cotNumero.value || 'cotizacion').trim().replace(/[^a-z0-9\-_]/gi, '_');
             pdf.save(`${numeroLimpio}.pdf`);
