@@ -112,6 +112,34 @@
     padding: 6px;
 }
 
+.logo-titulo-wrap {
+    flex: 1;
+    min-width: 0;
+}
+
+.logo-titulo {
+    display: block;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--cot-accent);
+    line-height: 1.2;
+    overflow-wrap: break-word;
+}
+
+.logo-titulo.vacio {
+    color: #cbd5e1;
+    font-weight: 700;
+}
+
+@media (max-width: 560px) {
+    .logo-uploader {
+        flex-wrap: wrap;
+    }
+    .logo-titulo {
+        font-size: 20px;
+    }
+}
+
 .logo-uploader label.upload-btn {
     display: inline-block;
     background: #eff6ff;

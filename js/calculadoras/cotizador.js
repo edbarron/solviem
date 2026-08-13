@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const logoInput = document.getElementById('logoInput');
     const logoPreview = document.getElementById('logoPreview');
     const logoPlaceholder = document.getElementById('logoPlaceholder');
+    const logoTitulo = document.getElementById('logoTitulo');
 
     const cotNumero = document.getElementById('cotNumero');
     const cotFecha = document.getElementById('cotFecha');
@@ -66,6 +67,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // ---- Color de acento ----
     function aplicarColor() {
         cotizacionPreview.style.setProperty('--cot-accent', cotColor.value);
+    }
+
+    // ---- Titular junto al logo (nombre de la empresa) ----
+    function actualizarLogoTitulo() {
+        const nombre = document.getElementById('empNombre').value.trim();
+        if (nombre) {
+            logoTitulo.textContent = nombre;
+            logoTitulo.classList.remove('vacio');
+        } else {
+            logoTitulo.textContent = 'Nombre de tu empresa';
+            logoTitulo.classList.add('vacio');
+        }
     }
 
     // ---- Logo ----
@@ -274,6 +287,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (!clonedPreview) return;
 
                     clonedPreview.querySelectorAll('input, textarea').forEach(function (campo) {
+                        // Los campos marcados como no-pdf (botón de subir logo, input de archivo, etc.)
+                        // ya están ocultos vía CSS en el clon; si los reemplazamos igual, el elemento
+                        // nuevo pierde esa clase/estado oculto y termina imprimiéndose (ej. la ruta
+                        // fake del input de archivo). Los dejamos tal cual, sin reemplazar.
+                        if (campo.classList.contains('no-pdf') || campo.type === 'file') return;
+
                         const estilos = window.getComputedStyle(campo);
                         const reemplazo = document.createElement(campo.tagName === 'TEXTAREA' ? 'div' : 'span');
 
@@ -376,6 +395,7 @@ document.addEventListener('DOMContentLoaded', function () {
     [...camposEmpresa, ...camposCliente].forEach(id => {
         document.getElementById(id).addEventListener('input', guardarEnLocalStorage);
     });
+    document.getElementById('empNombre').addEventListener('input', actualizarLogoTitulo);
 
     // ---- Inicialización ----
     inicializarFechas();
@@ -384,6 +404,7 @@ document.addEventListener('DOMContentLoaded', function () {
         crearFila();
     }
     aplicarColor();
+    actualizarLogoTitulo();
     recalcularTodo();
 
     console.log('✅ Cotizador cargado correctamente');
