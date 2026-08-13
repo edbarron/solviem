@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const cotizacionPreview = document.getElementById('cotizacionPreview');
     const descargarPdfBtn = document.getElementById('descargarPdfBtn');
+    const descargarImagenBtn = document.getElementById('descargarImagenBtn');
     const limpiarBtn = document.getElementById('limpiarBtn');
     const autosaveStatus = document.getElementById('autosaveStatus');
 
@@ -262,6 +263,73 @@ document.addEventListener('DOMContentLoaded', function () {
         location.reload();
     }
 
+    // ---- Captura del documento (compartida entre PDF e imagen) ----
+    function capturarDocumento() {
+        if (typeof html2canvas === 'undefined') {
+            return Promise.reject(new Error('html2canvas no disponible'));
+        }
+
+        return html2canvas(cotizacionPreview, {
+            scale: 2,
+            backgroundColor: '#ffffff',
+            useCORS: true,
+            // Al clonar el documento para capturarlo, cambiamos cada input/textarea
+            // por texto plano: html2canvas no siempre calcula bien la línea base del
+            // texto dentro de campos de formulario y lo corta a la mitad.
+            onclone: function (clonedDoc) {
+                const clonedPreview = clonedDoc.getElementById('cotizacionPreview');
+                if (!clonedPreview) return;
+
+                clonedPreview.querySelectorAll('input, textarea').forEach(function (campo) {
+                    // Los campos marcados como no-pdf (botón de subir logo, input de archivo, etc.)
+                    // ya están ocultos vía CSS en el clon; si los reemplazamos igual, el elemento
+                    // nuevo pierde esa clase/estado oculto y termina imprimiéndose (ej. la ruta
+                    // fake del input de archivo). Los dejamos tal cual, sin reemplazar.
+                    if (campo.classList.contains('no-pdf') || campo.type === 'file') return;
+
+                    const estilos = window.getComputedStyle(campo);
+                    const reemplazo = document.createElement(campo.tagName === 'TEXTAREA' ? 'div' : 'span');
+
+                    if (campo.type === 'color') {
+                        // El selector de color se sustituye por un swatch, no por su valor hexadecimal
+                        reemplazo.style.display = 'inline-block';
+                        reemplazo.style.width = '28px';
+                        reemplazo.style.height = '28px';
+                        reemplazo.style.borderRadius = '6px';
+                        reemplazo.style.background = campo.value;
+                        reemplazo.style.border = '1px solid #e5e7eb';
+                    } else if (campo.tagName === 'SELECT') {
+                        reemplazo.textContent = campo.options[campo.selectedIndex] ? campo.options[campo.selectedIndex].text : '';
+                    } else {
+                        reemplazo.textContent = campo.value || '';
+                    }
+
+                    // Copiamos el tipo de letra, tamaño, color y alineación tal cual se ven en pantalla
+                    reemplazo.style.font = estilos.font;
+                    reemplazo.style.color = estilos.color;
+                    reemplazo.style.textAlign = estilos.textAlign;
+                    reemplazo.style.padding = estilos.padding;
+                    reemplazo.style.whiteSpace = campo.tagName === 'TEXTAREA' ? 'pre-wrap' : 'nowrap';
+                    reemplazo.style.width = estilos.width;
+                    reemplazo.style.display = campo.type === 'color' ? 'inline-block' : (campo.tagName === 'TEXTAREA' ? 'block' : 'inline-block');
+
+                    campo.replaceWith(reemplazo);
+                });
+
+                // También reemplazamos el <select> de moneda si quedó alguno suelto fuera del bucle anterior
+                clonedPreview.querySelectorAll('select').forEach(function (sel) {
+                    const span = document.createElement('span');
+                    span.textContent = sel.options[sel.selectedIndex] ? sel.options[sel.selectedIndex].text : '';
+                    sel.replaceWith(span);
+                });
+            }
+        });
+    }
+
+    function nombreArchivoBase() {
+        return (cotNumero.value || 'cotizacion').trim().replace(/[^a-z0-9\-_]/gi, '_');
+    }
+
     // ---- Generar PDF ----
     async function descargarPDF() {
         if (typeof html2canvas === 'undefined' || typeof window.jspdf === 'undefined') {
@@ -275,61 +343,7 @@ document.addEventListener('DOMContentLoaded', function () {
         cotizacionPreview.classList.add('capturando-pdf');
 
         try {
-            const canvas = await html2canvas(cotizacionPreview, {
-                scale: 2,
-                backgroundColor: '#ffffff',
-                useCORS: true,
-                // Al clonar el documento para capturarlo, cambiamos cada input/textarea
-                // por texto plano: html2canvas no siempre calcula bien la línea base del
-                // texto dentro de campos de formulario y lo corta a la mitad.
-                onclone: function (clonedDoc) {
-                    const clonedPreview = clonedDoc.getElementById('cotizacionPreview');
-                    if (!clonedPreview) return;
-
-                    clonedPreview.querySelectorAll('input, textarea').forEach(function (campo) {
-                        // Los campos marcados como no-pdf (botón de subir logo, input de archivo, etc.)
-                        // ya están ocultos vía CSS en el clon; si los reemplazamos igual, el elemento
-                        // nuevo pierde esa clase/estado oculto y termina imprimiéndose (ej. la ruta
-                        // fake del input de archivo). Los dejamos tal cual, sin reemplazar.
-                        if (campo.classList.contains('no-pdf') || campo.type === 'file') return;
-
-                        const estilos = window.getComputedStyle(campo);
-                        const reemplazo = document.createElement(campo.tagName === 'TEXTAREA' ? 'div' : 'span');
-
-                        if (campo.type === 'color') {
-                            // El selector de color se sustituye por un swatch, no por su valor hexadecimal
-                            reemplazo.style.display = 'inline-block';
-                            reemplazo.style.width = '28px';
-                            reemplazo.style.height = '28px';
-                            reemplazo.style.borderRadius = '6px';
-                            reemplazo.style.background = campo.value;
-                            reemplazo.style.border = '1px solid #e5e7eb';
-                        } else if (campo.tagName === 'SELECT') {
-                            reemplazo.textContent = campo.options[campo.selectedIndex] ? campo.options[campo.selectedIndex].text : '';
-                        } else {
-                            reemplazo.textContent = campo.value || '';
-                        }
-
-                        // Copiamos el tipo de letra, tamaño, color y alineación tal cual se ven en pantalla
-                        reemplazo.style.font = estilos.font;
-                        reemplazo.style.color = estilos.color;
-                        reemplazo.style.textAlign = estilos.textAlign;
-                        reemplazo.style.padding = estilos.padding;
-                        reemplazo.style.whiteSpace = campo.tagName === 'TEXTAREA' ? 'pre-wrap' : 'nowrap';
-                        reemplazo.style.width = estilos.width;
-                        reemplazo.style.display = campo.type === 'color' ? 'inline-block' : (campo.tagName === 'TEXTAREA' ? 'block' : 'inline-block');
-
-                        campo.replaceWith(reemplazo);
-                    });
-
-                    // También reemplazamos el <select> de moneda si quedó alguno suelto fuera del bucle anterior
-                    clonedPreview.querySelectorAll('select').forEach(function (sel) {
-                        const span = document.createElement('span');
-                        span.textContent = sel.options[sel.selectedIndex] ? sel.options[sel.selectedIndex].text : '';
-                        sel.replaceWith(span);
-                    });
-                }
-            });
+            const canvas = await capturarDocumento();
 
             const { jsPDF } = window.jspdf;
             const imgData = canvas.toDataURL('image/png');
@@ -346,9 +360,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-
-            const numeroLimpio = (cotNumero.value || 'cotizacion').trim().replace(/[^a-z0-9\-_]/gi, '_');
-            pdf.save(`${numeroLimpio}.pdf`);
+            pdf.save(`${nombreArchivoBase()}.pdf`);
         } catch (err) {
             console.error('Error generando PDF:', err);
             alert('Ocurrió un error al generar el PDF. Por favor intenta de nuevo.');
@@ -356,6 +368,34 @@ document.addEventListener('DOMContentLoaded', function () {
             cotizacionPreview.classList.remove('capturando-pdf');
             descargarPdfBtn.disabled = false;
             descargarPdfBtn.textContent = textoOriginal;
+        }
+    }
+
+    // ---- Generar imagen (PNG), pensada para compartir por WhatsApp ----
+    async function descargarImagen() {
+        if (typeof html2canvas === 'undefined') {
+            alert('No se pudo cargar el generador de imagen. Revisa tu conexión a internet e intenta de nuevo.');
+            return;
+        }
+
+        descargarImagenBtn.disabled = true;
+        const textoOriginal = descargarImagenBtn.textContent;
+        descargarImagenBtn.textContent = 'Generando imagen...';
+        cotizacionPreview.classList.add('capturando-pdf');
+
+        try {
+            const canvas = await capturarDocumento();
+            const enlace = document.createElement('a');
+            enlace.download = `${nombreArchivoBase()}.png`;
+            enlace.href = canvas.toDataURL('image/png');
+            enlace.click();
+        } catch (err) {
+            console.error('Error generando la imagen:', err);
+            alert('Ocurrió un error al generar la imagen. Por favor intenta de nuevo.');
+        } finally {
+            cotizacionPreview.classList.remove('capturando-pdf');
+            descargarImagenBtn.disabled = false;
+            descargarImagenBtn.textContent = textoOriginal;
         }
     }
 
@@ -387,6 +427,7 @@ document.addEventListener('DOMContentLoaded', function () {
     descGlobalPorcentaje.addEventListener('input', recalcularTodo);
     impuestoPorcentaje.addEventListener('input', recalcularTodo);
     descargarPdfBtn.addEventListener('click', descargarPDF);
+    descargarImagenBtn.addEventListener('click', descargarImagen);
     if (limpiarBtn) limpiarBtn.addEventListener('click', limpiarFormulario);
 
     [cotNumero, cotFecha, cotValidez, formaPago, notasTexto, condicionesTexto].forEach(el => {

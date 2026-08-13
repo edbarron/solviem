@@ -413,6 +413,12 @@ table.cotizador-items .item-total {
     flex-wrap: wrap;
 }
 
+.cotizador-botones-descarga {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
 .btn-descargar-pdf {
     background: #02365D;
     color: white;
@@ -430,6 +436,27 @@ table.cotizador-items .item-total {
 }
 
 .btn-descargar-pdf:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-descargar-imagen {
+    background: white;
+    color: #02365D;
+    border: 2px solid #02365D;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-descargar-imagen:hover {
+    background: #eff6ff;
+}
+
+.btn-descargar-imagen:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
